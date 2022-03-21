@@ -2,7 +2,7 @@
   "name": "mine",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://cvelenn.github.io",
+  "homepage": "https://cvelenn.github.io/minesweeper",
   "dependencies": {
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
