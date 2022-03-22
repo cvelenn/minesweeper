@@ -1,5 +1,6 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import counterReducer from '../features/map/mapSlice';
+import filedReducer from '../features/field/filedSlice';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from '../sagas/sagas';
 
@@ -8,6 +9,7 @@ const sagaMiddleware = createSagaMiddleware()
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
+    field: filedReducer
   },
   middleware: getDM => getDM().prepend(sagaMiddleware)
 });
