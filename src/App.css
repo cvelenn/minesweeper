@@ -41,10 +41,9 @@
 .row {
   height: 22px; 
 }
+
 .field {
   cursor: pointer;
-  width: 20px;
-  height: 20px;
   display: inline-flex;
   border: 1px solid;
 }

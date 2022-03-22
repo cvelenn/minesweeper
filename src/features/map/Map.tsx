@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
 
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import {
@@ -7,7 +7,7 @@ import {
   selectMap,
   selectLoading,
   setLoading
-} from './counterSlice';
+} from './mapSlice';
 import styles from './Counter.module.css';
 
 export function Counter() {
@@ -16,7 +16,7 @@ export function Counter() {
   const [marked, setMarked] = useState(new Map());
   const loadnig = useAppSelector(selectLoading);
 
-  const click = (e: React.MouseEvent<HTMLButtonElement>, row: number, col: number) => {
+  const click = (e: React.MouseEvent<HTMLDivElement>, row: number, col: number) => {
     e.preventDefault();
     console.log(row, col);
     const index: string = `${row}-${col}`;
@@ -24,7 +24,7 @@ export function Counter() {
         const copy= new Map(marked);
         copy.set(index, !marked.get(index));
         setMarked(copy);
-    } else if (!marked.get(index)) {
+    } else if (!marked.get(index) && !loadnig) {
         dispatch(setLoading(true));
         dispatch(executeCommand(`open ${col} ${row - 1}`));
     }
@@ -35,20 +35,19 @@ export function Counter() {
       {map.map((line, row) => {
           return <div className='row'>{line.map((c, col) => {
             if (!marked.get(`${row}-${col}`)) {
-              return <Button 
-                disabled={loadnig}
-                variant="outlined"
+              return <Box 
+                sx={{ bgcolor: '#cfe8fc', height: '20px', width: '20px' }}
                 className="field"
                 onContextMenu={e => click(e, row, col)} 
-                onClick={e => click(e, row, col)}>{c === '□' ? '' : c}
-              </Button>
+                onClick={e => click(e, row, col)}>{c === '□' ? '?' : c}
+              </Box>
             } else {
-                return <Button 
-                variant="contained" 
-                className="field"
-                onContextMenu={e => click(e, row, col)} 
-                color="error">{c === '□' ? '' : c}
-              </Button>
+                return <Box 
+                  sx={{ bgcolor: 'red', height: '20px', width: '20px' }}
+                  className="field"
+                  onContextMenu={e => click(e, row, col)} 
+                  color="error">{c === '□' ? '?' : c}
+              </Box>
             }
           })}</div>
       })}
