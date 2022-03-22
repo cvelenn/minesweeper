@@ -16,7 +16,7 @@ export function Counter() {
     <div>
       {map.map((line, row) => {
           return <div className='row'>{line.map((c, col) => {
-            return <Field row={row} col={col} c={c} />
+            return <Field row={row} col={col} c={c} key={`${row}-${col}`} />
           })}</div>
       })}
       {loadnig ? 'loading' : ''}

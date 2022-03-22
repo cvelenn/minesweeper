@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import Box from '@mui/material/Box';
 import { useAppDispatch } from '../../app/hooks';
 
@@ -22,23 +22,28 @@ export function Field(props: FieldProps) {
     }
   }
 
+  const getFiled = () => {
+    if (! marked) {
+        return <Box 
+            sx={{ bgcolor: '#cfe8fc', height: '20px', width: '20px' }}
+            className="field"
+            onContextMenu={click} 
+            onClick={e => click(e)}>{c === '□' ? '?' : c}
+        </Box>
+    } else {
+        return <Box 
+            sx={{ bgcolor: 'red', height: '20px', width: '20px' }}
+            className="field"
+            onContextMenu={click} 
+            color="error">{c === '□' ? '?' : c}
+        </Box>
+    }
+  }
+  const getMemoFiled = useMemo(() => getFiled(), [marked, c]);
+
   return (
     <>
-        {!marked ? 
-            <Box 
-                sx={{ bgcolor: '#cfe8fc', height: '20px', width: '20px' }}
-                className="field"
-                onContextMenu={click} 
-                onClick={e => click(e)}>{c === '□' ? '?' : c}
-            </Box>
-            :
-            <Box 
-                sx={{ bgcolor: 'red', height: '20px', width: '20px' }}
-                className="field"
-                onContextMenu={click} 
-                color="error">{c === '□' ? '?' : c}
-            </Box>
-        }
+        {getMemoFiled}
     </>
   );
 }
