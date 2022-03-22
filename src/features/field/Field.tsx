@@ -25,7 +25,7 @@ export function Field(props: FieldProps) {
   const getFiled = () => {
     if (! marked) {
         return <Box 
-            sx={{ bgcolor: '#cfe8fc', height: '20px', width: '20px' }}
+            sx={{ bgcolor: 'background.default', height: '20px', width: '20px' }}
             className="field"
             onContextMenu={click} 
             onClick={e => click(e)}>{c === '□' ? '?' : c}

@@ -8,7 +8,7 @@ import {
 import styles from './Counter.module.css';
 import { Field } from '../field/Field';
 
-export function Counter() {
+export function Map() {
   const map = useAppSelector(selectMap);
   const loadnig = useAppSelector(selectLoading);
 
