@@ -10,8 +10,8 @@ describe('map reducer', () => {
   };
   it('should handle initial state', () => {
     expect(mapReducer(undefined, { type: 'unknown' })).toEqual({
-      value: 0,
-      status: 'idle',
+      map: [[]],
+      loading: false
     });
   });
 

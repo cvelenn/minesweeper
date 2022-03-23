@@ -28,14 +28,14 @@ export function Field(props: FieldProps) {
             sx={{ bgcolor: 'background.default', height: '20px', width: '20px' }}
             className="field"
             onContextMenu={click} 
-            onClick={e => click(e)}>{c === '□' ? '?' : c}
+            onClick={e => click(e)}>{c}
         </Box>
     } else {
         return <Box 
             sx={{ bgcolor: 'red', height: '20px', width: '20px' }}
             className="field"
             onContextMenu={click} 
-            color="error">{c === '□' ? '?' : c}
+            color="error">{c}
         </Box>
     }
   }
