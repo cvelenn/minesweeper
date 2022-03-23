@@ -31,7 +31,7 @@ export function Field(props: FieldProps) {
   const getFiled = () => {
     return <Box 
       sx={{ height: '20px', width: '20px' }}
-      className={classes.field}
+      className={`${classes.field} ${classes.common}`}
       onContextMenu={click} 
       onClick={e => !marked && click(e)}>{c}
     </Box>

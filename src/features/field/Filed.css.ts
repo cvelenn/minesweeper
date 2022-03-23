@@ -5,13 +5,15 @@ export interface FiledCSSProps {
 }
 
 export const useStyles = makeStyles<DefaultTheme, FiledCSSProps>((theme) => ({
-    field: prop => ({
-        cursor: 'pointer',
-        display: 'inline-flex',
-        border: '1px solid',
+    field: prop => ({        
         '&:hover': {
             background: prop.marked ? '#aa0000' : 'lightblue',
         },
         background: prop.marked ? '#FF0000' : '',
-    })
+    }),
+    common: {
+        cursor: 'pointer',
+        display: 'inline-flex',
+        border: '1px solid',
+    }
 }));
