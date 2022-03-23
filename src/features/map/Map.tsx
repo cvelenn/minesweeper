@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { useAppSelector } from '../../app/hooks';
 import {
   selectMap,
   selectLoading
 } from './mapSlice';
-import styles from './Counter.module.css';
 import { Field } from '../field/Field';
 
 export function Map() {
