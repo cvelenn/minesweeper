@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Radio from '@mui/material/Radio';
 import { useAppDispatch } from '../../app/hooks';
+import Button from '@mui/material/Button';
 
 export interface SizeProps {
   value: boolean;
@@ -45,6 +46,7 @@ export function Size() {
           name="radio-buttons"
         /> 4
       </div>
+      <Button variant="contained" onClick={_ => dispatch({type: 'SIZE', payload: `new ${selectedValue}` })}>Reset</Button>
     </div>
   );
 }
