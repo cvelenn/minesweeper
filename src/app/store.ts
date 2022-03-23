@@ -1,5 +1,6 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import mapReducer from '../features/map/mapSlice';
+import themeReducer from '../features/menu/themeSlice';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from '../sagas/sagas';
 
@@ -7,7 +8,8 @@ const sagaMiddleware = createSagaMiddleware()
 
 export const store = configureStore({
   reducer: {
-    map: mapReducer
+    map: mapReducer,
+    theme: themeReducer,
   },
   middleware: getDM => getDM().prepend(sagaMiddleware)
 });

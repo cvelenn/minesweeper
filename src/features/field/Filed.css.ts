@@ -1,18 +1,17 @@
-import { makeStyles } from '@mui/styles';
+import { DefaultTheme, makeStyles } from '@mui/styles';
 
-export const useStyles = makeStyles((theme) => ({
-    field: {
+export interface FiledCSSProps {
+    marked: boolean;
+}
+
+export const useStyles = makeStyles<DefaultTheme, FiledCSSProps>((theme) => ({
+    field: prop => ({
         cursor: 'pointer',
         display: 'inline-flex',
         border: '1px solid',
         '&:hover': {
-            background: 'lightblue',
+            background: prop.marked ? '#aa0000' : 'lightblue',
         },
-    },
-    marked: {
-        '&:hover': {
-            background: 'aa0000',
-        },
-        background: '#FF0000'
-    }
+        background: prop.marked ? '#FF0000' : '',
+    })
 }));
