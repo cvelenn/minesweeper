@@ -7,7 +7,7 @@ function websocketInitChannel() {
     return eventChannel(emitter => {
         // init the connection here
         ws.onopen = _ => {
-            ws.send("new 2");
+            ws.send("new 1");
         };
         ws.onmessage = e => {
             // dispatch an action with emitter here
