@@ -7,7 +7,7 @@ import {
   selectRestarted
 } from './mapSlice';
 import { selectTheme } from '../menu/themeSlice';
-import { Field } from '../field/Field';
+import { Field } from './Field';
 
 export function Map() {
   const map = useAppSelector(selectMap);
