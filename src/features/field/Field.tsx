@@ -15,7 +15,7 @@ export function Field(props: FieldProps) {
   const restarted = useAppSelector(selectRestarted);
   const dispatch = useAppDispatch();
   const [marked, setMarked] = useState(false);
-  const classes = useStyles({marked});
+  const classes = useStyles();
 
   (restarted && marked) && setMarked(false);
 
@@ -31,7 +31,7 @@ export function Field(props: FieldProps) {
   const getFiled = () => {
     return <Box 
       sx={{ height: '20px', width: '20px' }}
-      className={`${classes.field} ${classes.common}`}
+      className={`${classes.field} ${marked ? classes.marked : ''}`}
       onContextMenu={click} 
       onClick={e => !marked && click(e)}>{c}
     </Box>
