@@ -1,6 +1,6 @@
 import mapReducer, {
   MapState,
-  // increment
+  setMap
 } from './mapSlice';
 
 describe('map reducer', () => {
@@ -14,5 +14,9 @@ describe('map reducer', () => {
       loading: false
     });
   });
-
+  it('should handle setMap', () => {
+    const actual = mapReducer(initialState, setMap([['a', 'b']]));
+    expect(actual.map[0][0]).toEqual('a');
+    expect(actual.map[0][1]).toEqual('b');
+  });
 });
