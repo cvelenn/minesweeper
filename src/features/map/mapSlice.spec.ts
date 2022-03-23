@@ -6,7 +6,8 @@ import mapReducer, {
 describe('map reducer', () => {
   const initialState: MapState = {
     map: [[]],
-    loading: false
+    loading: false,
+    restarted: false,
   };
   it('should handle initial state', () => {
     expect(mapReducer(undefined, { type: 'unknown' })).toEqual({

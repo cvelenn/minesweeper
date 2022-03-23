@@ -1,6 +1,6 @@
 import { put, take, call } from 'redux-saga/effects'
 import { eventChannel } from 'redux-saga'
-import { setMap, setLoading } from './mapSlice';
+import { setMap, setLoading, setRestarted } from './mapSlice';
 import ws from '../../app/socket';
 
 function websocketInitChannel() {
@@ -27,7 +27,9 @@ export default function* mapSaga() {
     const channel = yield call(websocketInitChannel)
     while (true) {
         const event = yield take(channel)
-
+        if (event && event.data && event.data.startsWith('new:')) {
+            yield put(setRestarted());
+        }
         if (event && event.data && event.data.startsWith('map:')) {
             const matrix: string[][] = [[]];
             const rows = event.data.split('map:\n')[1].split('\n');

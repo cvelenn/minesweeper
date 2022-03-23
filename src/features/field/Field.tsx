@@ -1,7 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import Box from '@mui/material/Box';
-import { useAppDispatch } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { useStyles } from './Filed.css';
+import { selectRestarted } from '../map/mapSlice';
 
 export interface FieldProps {
     row: number;
@@ -11,9 +12,12 @@ export interface FieldProps {
 
 export function Field(props: FieldProps) {
   const {col, row, c} = props;
+  const restarted = useAppSelector(selectRestarted);
   const dispatch = useAppDispatch();
   const [marked, setMarked] = useState(false);
   const classes = useStyles({marked});
+
+  (restarted && marked) && setMarked(false);
 
   const click = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
