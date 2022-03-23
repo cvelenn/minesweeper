@@ -2,8 +2,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Minesweeper
 
-This is a minesweeper game. You can try it out on this link:
-https://nodejs.org/en/download/
+This is a minesweeper game. You can try it out on this [link:](https://nodejs.org/en/download/)
+
 
 ## Available Scripts
 
