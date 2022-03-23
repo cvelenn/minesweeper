@@ -41,12 +41,3 @@
 .row {
   height: 22px; 
 }
-
-.field {
-  cursor: pointer;
-  display: inline-flex;
-  border: 1px solid;
-}
-.marked {
-  background-color: red;
-}

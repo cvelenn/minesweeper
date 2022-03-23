@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import Box from '@mui/material/Box';
 import { useAppDispatch } from '../../app/hooks';
+import { useStyles } from './Filed.css';
 
 export interface FieldProps {
     row: number;
@@ -9,6 +10,7 @@ export interface FieldProps {
 }
 
 export function Field(props: FieldProps) {
+  const classes = useStyles();
   const {col, row, c} = props;
   const dispatch = useAppDispatch();
   const [marked, setMarked] = useState(false);
@@ -26,14 +28,14 @@ export function Field(props: FieldProps) {
     if (! marked) {
         return <Box 
             sx={{ bgcolor: 'background.default', height: '20px', width: '20px' }}
-            className="field"
+            className={classes.field}
             onContextMenu={click} 
             onClick={e => click(e)}>{c}
         </Box>
     } else {
         return <Box 
             sx={{ bgcolor: 'red', height: '20px', width: '20px' }}
-            className="field"
+            className={classes.field}
             onContextMenu={click} 
             color="error">{c}
         </Box>
