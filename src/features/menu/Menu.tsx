@@ -1,4 +1,5 @@
 import React from 'react';
+import Switch from '@mui/material/Switch';
 
 export interface FieldProps {
     value: boolean;
@@ -9,7 +10,10 @@ export function Menu(props: FieldProps) {
 
   return (
     <div>
-      <input type="checkbox" checked={props.value} onChange={_ => props.callback(!props.value)} /> Change Theme
+        <div>Change Theme</div>
+        <div>
+            <Switch checked={props.value} onChange={_ => props.callback(!props.value)}/> {props.value ? 'dark' : 'light'}
+        </div>
     </div>
   );
 }
