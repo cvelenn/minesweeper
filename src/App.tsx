@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import { Map } from './features/map/Map';
 import './App.css';
 import { ThemeProvider } from '@mui/material/styles';
-import darkTheme from './app/darkTheme';
-import lightTheme from './app/lightTheme';
+import darkTheme from './app/theme/darkTheme';
+import lightTheme from './app/theme/lightTheme';
 import Box from "@mui/material/Box";
 import {Menu} from "./features/menu/Menu";
 
