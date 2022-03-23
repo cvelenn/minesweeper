@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Radio from '@mui/material/Radio';
-import { useAppDispatch } from '../../app/hooks';
 import Button from '@mui/material/Button';
+import ws from '../../app/socket'
 
 export interface SizeProps {
   value: boolean;
@@ -9,12 +9,11 @@ export interface SizeProps {
 }
 
 export function Size() {
-  const dispatch = useAppDispatch();
   const [selectedValue, setSelectedValue] = React.useState('1');
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedValue(event.target.value);
-    dispatch({type: 'SIZE', payload: `new ${event.target.value}` });
+    ws.send(`new ${event.target.value}`);
   };
 
   return (
@@ -46,7 +45,7 @@ export function Size() {
           name="radio-buttons"
         /> 4
       </div>
-      <Button variant="contained" onClick={_ => dispatch({type: 'SIZE', payload: `new ${selectedValue}` })}>Reset</Button>
+      <Button variant="contained" onClick={_ => ws.send(`new ${selectedValue}`)}>Reset</Button>
     </div>
   );
 }

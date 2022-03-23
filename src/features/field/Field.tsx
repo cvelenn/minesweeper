@@ -2,6 +2,8 @@ import React, { useState, useMemo } from 'react';
 import Box from '@mui/material/Box';
 import { useAppDispatch } from '../../app/hooks';
 import { useStyles } from './Filed.css';
+import ws from '../../app/socket'
+import { setLoading } from '../../features/map/mapSlice';
 
 export interface FieldProps {
     row: number;
@@ -23,8 +25,9 @@ export function Field(props: FieldProps) {
     e.preventDefault();
     if (e.button === 2) {
       setMarked(!marked);
-    } else if (!marked) {    
-      dispatch({type: 'COMMAND', payload: `open ${col} ${row - 1}` });
+    } else if (!marked) {
+      dispatch(setLoading(true));
+      ws.send(`open ${col} ${row - 1}`);
     }
   }
 
