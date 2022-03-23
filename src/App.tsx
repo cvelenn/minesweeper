@@ -10,9 +10,13 @@ import {Menu} from "./features/menu/Menu";
 function App() {
 
   const [theme, setTheme] = useState(false);
+  const themeProp = {
+    value: theme, 
+    callback: setTheme
+  }
   return (
     <ThemeProvider theme={theme ? darkTheme : lightTheme}>
-      <Menu value={theme} callback={setTheme} />
+      <Menu theme={themeProp} />
       <Box className="App" sx={{bgcolor: "background.default"}}>
         <Map />
       </Box>

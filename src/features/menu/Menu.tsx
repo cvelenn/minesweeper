@@ -1,19 +1,15 @@
 import React from 'react';
-import Switch from '@mui/material/Switch';
+import {Theme, ThemeProps} from './Theme';
 
 export interface FieldProps {
-    value: boolean;
-    callback: Function
+    theme: ThemeProps
 }
 
 export function Menu(props: FieldProps) {
 
   return (
     <div>
-        <div>Change Theme</div>
-        <div>
-            <Switch checked={props.value} onChange={_ => props.callback(!props.value)}/> {props.value ? 'dark' : 'light'}
-        </div>
+        <Theme {...props.theme} />
     </div>
   );
 }
