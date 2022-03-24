@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, {useState} from 'react';
 import { useAppSelector } from '../../app/hooks';
 import {
   selectMap,
@@ -14,15 +13,27 @@ export function Map() {
   const loadnig = useAppSelector(selectLoading);
   const restarted = useAppSelector(selectRestarted);
   const theme = useAppSelector(selectTheme);
+  let lost = false;
+  let won = true;
+
+  const game = map.map((line, row) => {
+    return <div key={`row-${row}`} className='row'>{line.map((c, col) => {
+      if (c === '*') {
+        lost = true;
+      }
+      if (won && c === '□') {
+        won = false;
+      }
+      return <Field theme={theme} restarted={restarted} row={row} col={col} c={c} key={`${row}-${col}`} />
+    })}</div>
+  });
 
   return (
     <div>
-      {map.map((line, row) => {
-          return <div key={`row-${row}`} className='row'>{line.map((c, col) => {
-            return <Field theme={theme} restarted={restarted} row={row} col={col} c={c} key={`${row}-${col}`} />
-          })}</div>
-      })}
-      {loadnig ? 'loading' : ''}
+      {game}
+      {(loadnig && !lost && !won) && <div>loading</div>}
+      {(!won && lost && map.length > 1) && <div>you have lost</div>}
+      {(won && map.length > 1) && <div>you have won</div>}
     </div>
   );
 }
