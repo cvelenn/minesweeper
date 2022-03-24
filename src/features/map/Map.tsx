@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React from 'react';
+import Container from '@mui/material/Container';
 import { useAppSelector } from '../../app/hooks';
 import {
   selectMap,
@@ -29,11 +30,11 @@ export function Map() {
   });
 
   return (
-    <div>
+    <Container>
       {game}
       {(loadnig && !lost && !won) && <div>loading</div>}
       {(!won && lost && map.length > 1) && <div>you have lost</div>}
       {(won && map.length > 1) && <div>you have won</div>}
-    </div>
+    </Container>
   );
 }
