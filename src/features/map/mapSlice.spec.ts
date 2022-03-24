@@ -12,7 +12,8 @@ describe('map reducer', () => {
   it('should handle initial state', () => {
     expect(mapReducer(undefined, { type: 'unknown' })).toEqual({
       map: [[]],
-      loading: false
+      loading: false,
+      restarted: false,
     });
   });
   it('should handle setMap', () => {
