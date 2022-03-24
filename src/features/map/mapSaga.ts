@@ -5,21 +5,16 @@ import ws from '../../app/socket';
 
 function websocketInitChannel() {
     return eventChannel(emitter => {
-        // init the connection here
         ws.onopen = _ => {
             ws.send("new 1");
         };
         ws.onmessage = e => {
-            // dispatch an action with emitter here
             e.data.startsWith('open:') && ws.send("map");
             e.data.startsWith('new:') && ws.send("map");
 
             return emitter({data: e.data});
         }
-        // unsubscribe function
-        return () => {
-        // do whatever to interrupt the socket communication here
-        }
+        return () => {}
     })
 }
 
