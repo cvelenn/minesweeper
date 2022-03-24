@@ -40,4 +40,5 @@
 
 .row {
   height: 22px; 
+  white-space: nowrap;
 }
