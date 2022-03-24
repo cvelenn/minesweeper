@@ -18,7 +18,7 @@ export function Map() {
   return (
     <div>
       {map.map((line, row) => {
-          return <div className='row'>{line.map((c, col) => {
+          return <div key={`row-${row}`} className='row'>{line.map((c, col) => {
             return <Field theme={theme} restarted={restarted} row={row} col={col} c={c} key={`${row}-${col}`} />
           })}</div>
       })}
